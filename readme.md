@@ -13,17 +13,17 @@ For this project, you will write a Packer template and a Terraform template to d
 1. Create a new subscription on Azure Portal (if you don't have one)
 2. Add app registration for Packer and Terraform
 3. Create a credential for Packer
-3. Export to environment your credential for Terraform (ARM_CLIENT_ID, ARM_CLIENT_SECRET,) and subscription id (ARM_SUBSCRIPTION_ID), running commnd [export]
-4. Run command [packer build server.json] to maintaine Ubuntu image
-5. Export to einvironment tenant id (TF_VAR_tenant_id) and subscription id (TF_VAR_subscription_id), running command [export]
-6. Run command [terraform plan] and enter nececary variables:
-	prefix - the prefix for all resource's names
+3. Export to environment your credential for Packer (ARM_CLIENT_ID, ARM_CLIENT_SECRET,) and subscription id (ARM_SUBSCRIPTION_ID)
+4. Run command [packer build server.json] to create Ubuntu image
+5. Export to environment tenant id (TF_VAR_tenant_id) and subscription id (TF_VAR_subscription_id)
+6. Run command [terraform plan] and enter necessary variables:
+	prefix - the prefix for all resources names
 	location - location, where your resources will be deployed
 	user - user name for virtual machines 
-	password - password for virtual machines. Note: upper case letter, special symbol and length between 6 and 24 are required
+	password - password for virtual machines. 
 	instances - number of virtual machines that will be created
 
 
 ### Output
-Scalable, customizable wec server in Azure
+Customizable and scalable web server in Azure.
 
