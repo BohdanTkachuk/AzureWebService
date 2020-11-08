@@ -33,7 +33,8 @@ resource "azurerm_subnet" "internal" {
 }
 
 resource "azurerm_network_interface" "main" {
-  name                = "${var.prefix}-nic"
+  count               = var.instances 
+  name                = "${var.prefix}-nic-${count.index}"
   resource_group_name = azurerm_resource_group.main.name
   location            = azurerm_resource_group.main.location
   tags = {
@@ -65,27 +66,39 @@ resource "azurerm_network_security_group" "main" {
     Name = "Udacity-project"
   }
   security_rule {
-    name                       = "InboundAllowed"
-    priority                   = 100
+    name                       = "InboundAllowedVnet"
+    priority                   = 200
     direction                  = "Inbound"
     access                     = "Allow"
     protocol                   = "Tcp"
     source_port_range          = "*"
     destination_port_range     = "*"
-    source_address_prefix      = "*"
-    destination_address_prefix = "*"
+    source_address_prefix      = "VirtualNetwork"
+    destination_address_prefix = "VirtualNetwork"
   }
 
   security_rule {
-    name                       = "OutboundDeny"
-    priority                   = 100
+    name                       = "OutboundAllowedVnet"
+    priority                   = 210
     direction                  = "Outbound"
+    access                     = "Allow"
+    protocol                   = "Tcp"
+    source_port_range          = "*"
+    destination_port_range     = "*"
+    source_address_prefix      = "VirtualNetwork"
+    destination_address_prefix = "VirtualNetwork"
+  }
+
+  security_rule {
+    name                       = "InboundDeny"
+    priority                   = 100
+    direction                  = "Inbound"
     access                     = "Deny"
     protocol                   = "Tcp"
     source_port_range          = "*"
     destination_port_range     = "*"
-    source_address_prefix      = "*"
-    destination_address_prefix = "*"
+    source_address_prefix      = "Internet"
+    destination_address_prefix = "VirtualNetwork"
   }
 
 }
@@ -148,7 +161,7 @@ data "azurerm_image" "image" {
 }
 
 resource "azurerm_linux_virtual_machine" "main" {
-  count = var.instances
+  count                           = var.instances
   name                            = "${var.prefix}-vm-${count.index}"
   resource_group_name             = azurerm_resource_group.main.name
   location                        = azurerm_resource_group.main.location
@@ -161,7 +174,7 @@ resource "azurerm_linux_virtual_machine" "main" {
     Name = "Udacity-project"
   }
   network_interface_ids = [
-    azurerm_network_interface.main.id,
+    azurerm_network_interface.main[count.index].id,
   ]
 
   source_image_id = data.azurerm_image.image.id
@@ -172,3 +185,15 @@ resource "azurerm_linux_virtual_machine" "main" {
   }
 
 }
+
+resource "azurerm_managed_disk" "main" {
+  count = var.instances
+  name                 = "${var.prefix}-disk-vm-${count.index}"
+  location             = azurerm_resource_group.main.location
+  resource_group_name  = azurerm_resource_group.main.name
+  storage_account_type = "Standard_LRS"
+  create_option        = "Empty"
+  disk_size_gb         = 10
+}
+
+
