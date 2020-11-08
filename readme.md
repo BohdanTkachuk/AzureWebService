@@ -41,6 +41,6 @@ Customizable and scalable web server in Azure with numerous of resources.
 Screenshots of `packer build` output: 
 
 Screenshots of `terraform apply` output: 
-<a href="https://postimg.cc/vcVtqb1h" target="_blank"><img src="https://i.postimg.cc/vcVtqb1h/Screenshot-from-2020-11-08-15-52-16.png" alt="Screenshot-from-2020-11-08-15-52-16"/></a><br/><br/>
+https://i.postimg.cc/65HbQQtk/Screenshot-from-2020-11-08-15-52-16.png
 
 
