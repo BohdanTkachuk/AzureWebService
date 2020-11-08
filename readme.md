@@ -38,9 +38,18 @@ For this project, you will use a Packer template and a Terraform template to dep
 
 ### Output
 Customizable and scalable web server in Azure with numerous of resources.
-Screenshots of `packer build` output: 
 
 Screenshots of `terraform apply` output: 
 ![Alt text](https://i.postimg.cc/65HbQQtk/Screenshot-from-2020-11-08-15-52-16.png)
+![Alt text](https://i.postimg.cc/gcHBfD5k/Screenshot-from-2020-11-08-15-52-22.png)
+![Alt text](https://i.postimg.cc/520G5Cs9/Screenshot-from-2020-11-08-15-52-25.png)
+![Alt text](https://i.postimg.cc/pd564tNg/Screenshot-from-2020-11-08-15-52-29.png)
+![Alt text](https://i.postimg.cc/MZ7hzxcw/Screenshot-from-2020-11-08-15-52-34.png)
+![Alt text](https://i.postimg.cc/sxsHMQBr/Screenshot-from-2020-11-08-15-52-38.png)
+![Alt text](https://i.postimg.cc/G2051Sd9/Screenshot-from-2020-11-08-15-52-43.png)
+![Alt text](https://i.postimg.cc/L537DBd5/Screenshot-from-2020-11-08-15-52-53.png)
+![Alt text](https://i.postimg.cc/qR8ZBXvw/Screenshot-from-2020-11-08-15-53-05.png)
+![Alt text](https://i.postimg.cc/Y0RnYrgm/Screenshot-from-2020-11-08-15-53-14.png)
+![Alt text](https://i.postimg.cc/nckbGZZ2/Screenshot-from-2020-11-08-15-53-18.png)
 
 
